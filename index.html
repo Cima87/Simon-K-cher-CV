@@ -18,8 +18,8 @@
             /* General Styles */
             --primary-color: #ffffff;
             --secondary-color: #e0e0e0;
-            --accent-color: #00aaff; /* Keeping a light blue for links as it pairs well with green */
-            --overlay-color: rgba(0, 0, 0, 0.2); /* A more subtle overlay for solid colors */
+            --accent-color: #00aaff;
+            --overlay-color: rgba(0, 0, 0, 0.3);
         }
 
         body {
@@ -30,18 +30,13 @@
             line-height: 1.7;
         }
 
-        /* --- Panel Scrolling Container --- */
-        main {
-            /* This container is necessary for the sticky positioning to work correctly */
-        }
-
         .panel {
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 40px 20px;
-            box-sizing: border-box; /* Important for full height */
+            box-sizing: border-box;
             position: sticky;
             top: 0;
         }
@@ -49,4 +44,205 @@
         .panel-content {
             text-align: center;
             max-width: 800px;
-            background-color: var(--overlay-col
+            background-color: var(--overlay-color);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1, h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 3em;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            color: var(--secondary-color);
+        }
+
+        h3 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            text-align: left;
+        }
+
+        .comparison-grid h4 {
+            font-size: 1.1em;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+        
+        .comparison-grid p {
+            margin-bottom: 0;
+        }
+
+        footer {
+            position: relative; 
+            z-index: 10; 
+            text-align: center;
+            background-color: var(--dark-neutral);
+            padding: 60px 20px;
+        }
+        
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            transition: color 0.3s;
+            font-size: 1.2em;
+        }
+
+        footer a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            h3 { font-size: 1.8em; }
+            .panel-content { padding: 30px; }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <!-- PANEL 1: HERO -->
+        <section class="panel" id="hero" style="background-color: var(--seb-dark-green);">
+            <div class="panel-content" style="background: none;">
+                <h1>Simon Köcher</h1>
+                <h2>From Cinematographer to Event Manager</h2>
+            </div>
+        </section>
+
+        <!-- PANEL 2: THE PREMISE -->
+        <section class="panel" id="premise" style="background-color: var(--background-color);">
+            <div class="panel-content">
+                <h3>A Film Set is a Live Event</h3>
+                <p style="font-size: 1.2em;">
+                    For 14 years, my job has been to turn a creative vision into a tangible reality. Every film shoot is a high-stakes event with complex logistics, tight deadlines, and diverse teams, equipping me with a robust skillset perfectly suited for event management.
+                </p>
+            </div>
+        </section>
+
+        <!-- PANEL 3: VISION -->
+        <section class="panel" id="vision" style="background-color: var(--seb-light-green);">
+            <div class="panel-content">
+                <h3>Vision &amp; Planning</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Translating a script into a visual blueprint. Creating storyboards, shot lists, and lighting plans to guide the entire production.</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Defining an event's purpose and goals. Developing a cohesive concept, curating content, and creating a detailed agenda for execution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- PANEL 4: TEAM -->
+        <section class="panel" id="team" style="background-color: var(--dark-neutral);">
+            <div class="panel-content">
+                <h3>Team Management</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Leading a crew of technicians and artists while collaborating closely with directors and producers to meet client expectations.</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Coordinating with vendors, speakers, and internal teams, ensuring everyone is aligned and working towards a common goal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANEL 5: COMMUNICATION -->
+        <section class="panel" id="communication" style="background-color: var(--seb-dark-green);">
+            <div class="panel-content">
+                <h3>Communication</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Acting as the key liaison between the director's vision and the technical crew. Clearly articulating complex creative and technical needs under pressure.</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Serving as the central point of contact for all stakeholders. Providing clear updates and managing expectations for clients, suppliers, and attendees.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANEL 6: LOGISTICS -->
+        <section class="panel" id="logistics" style="background-color: var(--dark-neutral);">
+            <div class="panel-content">
+                <h3>Logistics</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Managing high-value equipment, scouting and securing locations, and coordinating schedules for cast and crew across multiple departments.</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Handling venue booking, AV setup, and supplier management. Planning timelines and resources to ensure a seamless flow from start to finish.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANEL 7: EXECUTION -->
+        <section class="panel" id="execution" style="background-color: var(--seb-light-green);">
+            <div class="panel-content">
+                <h3>Execution &amp; Problem-Solving</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Thinking on my feet to solve technical and creative problems on the fly. Adapting to changing conditions to ensure the project stays on schedule and on budget.</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Proactively managing on-site challenges and making decisive calls. Ensuring a flawless experience for attendees, no matter what happens behind the scenes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <h3 style="margin-bottom: 20px;">Let's create something great together.</h3>
+            <a href="mailto:hello@simonkoecher.com">EMAIL</a>
+            <a href="http://www.simonkoecher.com" target="_blank">WEBSITE</a>
+        </div>
+    </footer>
+
+</body>
+</html>
