@@ -6,13 +6,20 @@
     <title>Simon Köcher - From Cinematography to Event Management</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #ffffff;
-            --secondary-color: #cccccc;
+            /* SEB Inspired Palette */
+            --seb-dark-green: #00452c;
+            --seb-light-green: #008755;
+            --dark-neutral: #1a1a1a;
             --background-color: #121212;
-            --accent-color: #00aaff;
+
+            /* General Styles */
+            --primary-color: #ffffff;
+            --secondary-color: #e0e0e0;
+            --accent-color: #00aaff; /* Keeping a light blue for links as it pairs well with green */
+            --overlay-color: rgba(0, 0, 0, 0.2); /* A more subtle overlay for solid colors */
         }
 
         body {
@@ -23,244 +30,23 @@
             line-height: 1.7;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* --- Panel Scrolling Container --- */
+        main {
+            /* This container is necessary for the sticky positioning to work correctly */
         }
 
-        /* --- Header / Hero Section --- */
-        header {
-            min-height: 80vh;
+        .panel {
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 20px;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1920x1080/222/FFF?text=Placeholder+Image');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        header h1 {
-            color: var(--primary-color);
-            font-size: 3.5em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin: 0;
-        }
-
-        header p {
-            font-size: 1.2em;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* --- General Section Styling --- */
-        section {
-            padding: 60px 0;
-        }
-
-        h2 {
-            font-size: 2.5em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        /* --- Skill Comparison Section --- */
-        .skill-block {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-
-        /* Alternating layout for visual interest */
-        .skill-block:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .skill-image {
-            flex: 1;
-            max-width: 40%;
-        }
-
-        .skill-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 5px;
-        }
-
-        .skill-text {
-            flex: 1.5;
-        }
-
-        .skill-text h3 {
-            font-size: 1.8em;
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .comparison-grid h4 {
-            font-size: 1.1em;
-            color: var(--accent-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 8px;
-            margin-top: 0;
-            text-transform: uppercase;
-        }
-
-        /* --- Footer / Contact Section --- */
-        footer {
-            text-align: center;
-            background-color: #1a1a1a;
             padding: 40px 20px;
+            box-sizing: border-box; /* Important for full height */
+            position: sticky;
+            top: 0;
         }
 
-        footer p {
-            margin: 0 0 20px 0;
-            font-size: 1.2em;
-        }
-        
-        footer a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: var(--primary-color);
-        }
-
-        /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.5em; }
-            h2 { font-size: 2em; }
-
-            .skill-block, .skill-block:nth-child(even) {
-                flex-direction: column;
-            }
-
-            .skill-image {
-                max-width: 100%;
-                margin-bottom: 20px;
-            }
-            
-            .comparison-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- HERO SECTION -->
-    <header>
-        <h1>SIMON KÖCHER</h1>
-        <p>FROM CINEMATOGRAPHER TO EVENT MANAGER</p>
-    </header>
-
-    <main>
-        <!-- INTRODUCTION -->
-        <section id="intro">
-            <div class="container" style="text-align: center;">
-                <h2>A Film Set is an Event</h2>
-                <p style="font-size: 1.2em; max-width: 700px; margin: 0 auto;">
-                    For 14 years, my job has been to turn a creative vision into a tangible reality. Every film shoot is a high-stakes, live event with complex logistics, tight deadlines, and diverse teams. This experience has equipped me with a unique and robust skillset perfectly suited for event management.
-                </p>
-            </div>
-        </section>
-
-        <!-- SKILLS SECTION -->
-        <section id="skills">
-            <div class="container">
-                <div class="skill-block">
-                    <!-- TODO: Replace this placeholder image -->
-                    <div class="skill-image">
-                        <img src="https://placehold.co/600x400/222/FFF?text=Image+1" alt="Planning and vision visualization">
-                    </div>
-                    <div class="skill-text">
-                        <h3>Vision &amp; Planning</h3>
-                        <div class="comparison-grid">
-                            <div>
-                                <h4>THE FILM SET</h4>
-                                <p>Translating a script into a visual blueprint. Creating storyboards, shot lists, and lighting plans to guide the entire production.</p>
-                            </div>
-                            <div>
-                                <h4>THE EVENT</h4>
-                                <p>Defining the event's purpose and goals. Developing a cohesive concept, curating content, and creating a detailed agenda for execution.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-block">
-                    <!-- TODO: Replace this placeholder image -->
-                    <div class="skill-image">
-                        <img src="https://placehold.co/600x400/222/FFF?text=Image+2" alt="Team and client collaboration">
-                    </div>
-                    <div class="skill-text">
-                        <h3>Team &amp; Stakeholder Management</h3>
-                        <div class="comparison-grid">
-                            <div>
-                                <h4>THE FILM SET</h4>
-                                <p>Leading a crew of technicians and artists while collaborating closely with directors and producers to meet client expectations for brands like Google & Ericsson.</p>
-                            </div>
-                            <div>
-                                <h4>THE EVENT</h4>
-                                <p>Coordinating with vendors, speakers, and internal teams. Acting as the main point of contact for clients to ensure their vision is realized successfully.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-block">
-                    <!-- TODO: Replace this placeholder image -->
-                    <div class="skill-image">
-                        <img src="https://placehold.co/600x400/222/FFF?text=Image+3" alt="Logistics and on-site execution">
-                    </div>
-                    <div class="skill-text">
-                        <h3>Logistics &amp; Execution</h3>
-                        <div class="comparison-grid">
-                            <div>
-                                <h4>THE FILM SET</h4>
-                                <p>Managing complex camera equipment, scouting locations, and solving technical problems on the fly under immense time pressure.</p>
-                            </div>
-                            <div>
-                                <h4>THE EVENT</h4>
-                                <p>Handling venue booking, AV setup, and on-site logistics. Proactively solving issues to ensure a seamless experience for all attendees.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER / CONTACT SECTION -->
-    <footer>
-        <div class="container">
-            <p>Let's create something great together.</p>
-            <a href="mailto:hello@simonkoecher.com">EMAIL</a>
-            <a href="http://www.simonkoecher.com" target="_blank">WEBSITE</a>
-        </div>
-    </footer>
-
-</body>
-</html>
+        .panel-content {
+            text-align: center;
+            max-width: 800px;
+            background-color: var(--overlay-col
