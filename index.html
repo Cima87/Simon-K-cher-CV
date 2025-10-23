@@ -6,7 +6,8 @@
     <title>Simon Köcher - From Cinematography to Event Management</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- UPDATED: Added 'Lato' font for the body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             /* SEB Inspired Palette */
@@ -14,6 +15,7 @@
             --seb-light-green: #008755;
             --dark-neutral: #1a1a1a;
             --background-color: #121212;
+            --dark-red: #A12C2F; /* New color for the hero box */
 
             /* General Styles */
             --primary-color: #ffffff;
@@ -24,7 +26,8 @@
 
         body {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
+            /* UPDATED: Using Lato for body, keeping Montserrat for headings below */
+            font-family: 'Lato', sans-serif;
             background-color: var(--background-color);
             color: var(--secondary-color);
             line-height: 1.7;
@@ -50,9 +53,13 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        h1, h2 {
+        /* UPDATED: Headings will continue to use Montserrat */
+        h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
+            font-weight: 700;
+        }
+
+        h1, h2 {
             text-transform: uppercase;
             letter-spacing: 4px;
             color: var(--primary-color);
@@ -61,6 +68,7 @@
 
         h1 {
             font-size: 3em;
+            font-weight: 900;
         }
 
         h2 {
@@ -72,7 +80,6 @@
 
         h3 {
             font-size: 2.5em;
-            font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 40px;
         }
@@ -133,7 +140,8 @@
     <main>
         <!-- PANEL 1: HERO -->
         <section class="panel" id="hero" style="background-color: var(--seb-dark-green);">
-            <div class="panel-content" style="background: none;">
+            <!-- UPDATED: Changed style to add red background and remove shadow -->
+            <div class="panel-content" style="background-color: var(--dark-red); box-shadow: none;">
                 <h1>Simon Köcher</h1>
                 <h2>From Cinematographer to Event Manager</h2>
             </div>
