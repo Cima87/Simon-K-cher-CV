@@ -3,123 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon Köcher</title>
+    <title>Simon Köcher - From Cinematography to Event Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body, html {
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #cccccc;
+            --background-color: #121212;
+            --accent-color: #00aaff;
+        }
+
+        body {
             margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #ffffff;
-            overflow: hidden; /* Prevents scrollbars */
-        }
-
-        #bg-video {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -2;
-            transform: translateX(-50%) translateY(-50%);
-            object-fit: cover; /* This makes the video cover the screen */
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for text readability */
-            z-index: -1;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background-color);
+            color: var(--secondary-color);
+            line-height: 1.7;
         }
 
         .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Header / Hero Section --- */
+        header {
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            height: 100vh;
             padding: 20px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1920x1080/222/FFF?text=Placeholder+Image');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        h1 {
-            font-size: 2.5em;
-            font-weight: bold;
-            letter-spacing: 4px;
+        header h1 {
+            color: var(--primary-color);
+            font-size: 3.5em;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 4px;
             margin: 0;
         }
 
-        h2 {
+        header p {
             font-size: 1.2em;
-            font-weight: normal;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin: 10px 0 30px 0;
-            color: #cccccc;
         }
 
-        p {
-            max-width: 500px;
+        /* --- General Section Styling --- */
+        section {
+            padding: 60px 0;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        /* --- Skill Comparison Section --- */
+        .skill-block {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        /* Alternating layout for visual interest */
+        .skill-block:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .skill-image {
+            flex: 1;
+            max-width: 40%;
+        }
+
+        .skill-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 5px;
+        }
+
+        .skill-text {
+            flex: 1.5;
+        }
+
+        .skill-text h3 {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .comparison-grid h4 {
             font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 40px;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-top: 0;
+            text-transform: uppercase;
         }
 
-        .links a {
-            color: #ffffff;
+        /* --- Footer / Contact Section --- */
+        footer {
+            text-align: center;
+            background-color: #1a1a1a;
+            padding: 40px 20px;
+        }
+
+        footer p {
+            margin: 0 0 20px 0;
+            font-size: 1.2em;
+        }
+        
+        footer a {
+            color: var(--accent-color);
             text-decoration: none;
+            font-weight: bold;
             margin: 0 15px;
-            font-size: 1em;
-            letter-spacing: 1px;
             transition: color 0.3s;
         }
 
-        .links a:hover {
-            color: #00aaff; /* Highlight color on hover */
+        footer a:hover {
+            color: var(--primary-color);
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.8em;
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5em; }
+            h2 { font-size: 2em; }
+
+            .skill-block, .skill-block:nth-child(even) {
+                flex-direction: column;
             }
-            h2 {
-                font-size: 1em;
+
+            .skill-image {
+                max-width: 100%;
+                margin-bottom: 20px;
             }
-            p {
-                font-size: 1em;
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- This is a free background video from Coverr.co. You can replace the src with another video if you find one you like better. -->
-    <video playsinline autoplay muted loop id="bg-video">
-        <source src="https://cdn.coverr.co/videos/coverr-urban-scenery-with-cars-and-people-on-the-street-at-night-5863/1080p.mp4" type="video/mp4">
-    </video>
+    <!-- HERO SECTION -->
+    <header>
+        <h1>SIMON KÖCHER</h1>
+        <p>FROM CINEMATOGRAPHER TO EVENT MANAGER</p>
+    </header>
 
-    <div class="overlay"></div>
+    <main>
+        <!-- INTRODUCTION -->
+        <section id="intro">
+            <div class="container" style="text-align: center;">
+                <h2>A Film Set is an Event</h2>
+                <p style="font-size: 1.2em; max-width: 700px; margin: 0 auto;">
+                    For 14 years, my job has been to turn a creative vision into a tangible reality. Every film shoot is a high-stakes, live event with complex logistics, tight deadlines, and diverse teams. This experience has equipped me with a unique and robust skillset perfectly suited for event management.
+                </p>
+            </div>
+        </section>
 
-    <div class="container">
-        <h1>Simon Köcher</h1>
-        <h2>Cinematographer & Visual Storyteller</h2>
-        <p>
-            A creative professional with 14 years of experience in visual storytelling and project management within the film industry. Passionate about crafting captivating images and bringing creative visions to life.
-        </p>
-        <div class="links">
+        <!-- SKILLS SECTION -->
+        <section id="skills">
+            <div class="container">
+                <div class="skill-block">
+                    <!-- TODO: Replace this placeholder image -->
+                    <div class="skill-image">
+                        <img src="https://placehold.co/600x400/222/FFF?text=Image+1" alt="Planning and vision visualization">
+                    </div>
+                    <div class="skill-text">
+                        <h3>Vision &amp; Planning</h3>
+                        <div class="comparison-grid">
+                            <div>
+                                <h4>THE FILM SET</h4>
+                                <p>Translating a script into a visual blueprint. Creating storyboards, shot lists, and lighting plans to guide the entire production.</p>
+                            </div>
+                            <div>
+                                <h4>THE EVENT</h4>
+                                <p>Defining the event's purpose and goals. Developing a cohesive concept, curating content, and creating a detailed agenda for execution.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-block">
+                    <!-- TODO: Replace this placeholder image -->
+                    <div class="skill-image">
+                        <img src="https://placehold.co/600x400/222/FFF?text=Image+2" alt="Team and client collaboration">
+                    </div>
+                    <div class="skill-text">
+                        <h3>Team &amp; Stakeholder Management</h3>
+                        <div class="comparison-grid">
+                            <div>
+                                <h4>THE FILM SET</h4>
+                                <p>Leading a crew of technicians and artists while collaborating closely with directors and producers to meet client expectations for brands like Google & Ericsson.</p>
+                            </div>
+                            <div>
+                                <h4>THE EVENT</h4>
+                                <p>Coordinating with vendors, speakers, and internal teams. Acting as the main point of contact for clients to ensure their vision is realized successfully.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-block">
+                    <!-- TODO: Replace this placeholder image -->
+                    <div class="skill-image">
+                        <img src="https://placehold.co/600x400/222/FFF?text=Image+3" alt="Logistics and on-site execution">
+                    </div>
+                    <div class="skill-text">
+                        <h3>Logistics &amp; Execution</h3>
+                        <div class="comparison-grid">
+                            <div>
+                                <h4>THE FILM SET</h4>
+                                <p>Managing complex camera equipment, scouting locations, and solving technical problems on the fly under immense time pressure.</p>
+                            </div>
+                            <div>
+                                <h4>THE EVENT</h4>
+                                <p>Handling venue booking, AV setup, and on-site logistics. Proactively solving issues to ensure a seamless experience for all attendees.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER / CONTACT SECTION -->
+    <footer>
+        <div class="container">
+            <p>Let's create something great together.</p>
             <a href="mailto:hello@simonkoecher.com">EMAIL</a>
             <a href="http://www.simonkoecher.com" target="_blank">WEBSITE</a>
-            <!-- You can add more links here, like to LinkedIn or Instagram -->
         </div>
-    </div>
+    </footer>
 
 </body>
 </html>
