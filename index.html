@@ -3,161 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon Köcher - CV</title>
+    <title>Simon Köcher</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-            line-height: 1.6;
+        body, html {
             margin: 0;
             padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
+            overflow: hidden; /* Prevents scrollbars */
         }
+
+        #bg-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover; /* This makes the video cover the screen */
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for text readability */
+            z-index: -1;
+        }
+
         .container {
-            max-width: 800px;
-            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
             padding: 20px;
         }
-        h1, h2, h3 {
-            color: #ffffff;
-            font-weight: 500;
-        }
+
         h1 {
             font-size: 2.5em;
-            margin-bottom: 0;
+            font-weight: bold;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: 0;
         }
+
         h2 {
-            font-size: 1.8em;
-            border-bottom: 1px solid #444;
-            padding-bottom: 10px;
-            margin-top: 40px;
-        }
-        h3 {
             font-size: 1.2em;
-            color: #00aaff; /* A touch of color */
-            margin-bottom: 5px;
-        }
-        .contact-info {
-            margin-top: 10px;
-            margin-bottom: 40px;
-            color: #aaa;
-        }
-        .contact-info a {
-            color: #00aaff;
-            text-decoration: none;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-        .job {
-            margin-bottom: 30px;
-        }
-        .job-title {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-        .job-title em {
-            color: #999;
             font-weight: normal;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin: 10px 0 30px 0;
+            color: #cccccc;
+        }
+
+        p {
+            max-width: 500px;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1em;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .links a:hover {
+            color: #00aaff; /* Highlight color on hover */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1em;
+            }
+            p {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- This is a free background video from Coverr.co. You can replace the src with another video if you find one you like better. -->
+    <video playsinline autoplay muted loop id="bg-video">
+        <source src="https://cdn.coverr.co/videos/coverr-urban-scenery-with-cars-and-people-on-the-street-at-night-5863/1080p.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
     <div class="container">
-        <header>
-            <h1>SIMON KÖCHER</h1>
-            <div class="contact-info">
-                Dalgårdsvägen 8, 12133 Enskededalen | +46 709214543 | 
-                <a href="mailto:hello@simonkoecher.com">hello@simonkoecher.com</a> | 
-                <a href="http://www.simonkoecher.com" target="_blank">www.simonkoecher.com</a>
-            </div>
-        </header>
-
-        <main>
-            <section id="about-me">
-                <h2>ABOUT ME</h2>
-                <p>
-                    A solution-oriented and creative professional with 14 years of experience in project management within the film industry. I am a driven and genuine person to work with, communicative, and keen to always maintain a positive attitude towards challenges and colleagues. I'm passionate about my work, self-sufficient, and reliable. I'm sociable, thrive in team settings, and enjoy creative collaboration. I possess strong leadership skills and am an effective team player. I am now seeking to leverage my extensive experience in managing complex, high-stakes projects to transition into a career in event management.
-                </p>
-            </section>
-
-            <section id="experience">
-                <h2>EXPERIENCE</h2>
-                <div class="job">
-                    <div class="job-title">
-                        <h3>FREELANCE CINEMATOGRAPHER</h3>
-                        <em>Since 2019</em>
-                    </div>
-                    <p>
-                        As a cinematographer, I have been responsible for the end-to-end planning and execution of film shoots, which are essentially small-scale, high-pressure events. This has involved:
-                    </p>
-                    <ul>
-                        <li><strong>Project Management:</strong> Leading projects for both small and large-scale productions, from concept to execution. This includes managing budgets, timelines, and resources to ensure a seamless and high-quality final product.</li>
-                        <li><strong>Stakeholder Management:</strong> Collaborating closely with clients such as Google, Ericsson, and Atlas Copco to define the purpose, ambitions, and targets of each project. I have extensive experience in acting as a trusted advisor to clients, ensuring their vision is realized.</li>
-                        <li><strong>Logistics and Planning:</strong> Ensuring seamless logistics and high production value by coordinating with various departments, including lighting, sound, and art direction.</li>
-                        <li><strong>Content and Agenda Development:</strong> Developing the visual content and shot lists (agendas) for each project, ensuring a 360° marketing perspective is considered.</li>
-                    </ul>
-                </div>
-
-                <div class="job">
-                    <div class="job-title">
-                        <h3>FRILANS DIGITAL IMAGING TECHNICIAN</h3>
-                        <em>2012 to 2019</em>
-                    </div>
-                    <p>
-                        As a Digital Imaging Technician, I was responsible for managing all filmed material, including backups and preparation for post-production. This role required a sharp eye for detail and a structured approach to ensure the integrity of the final product.
-                    </p>
-                </div>
-                
-                <div class="job">
-                     <div class="job-title">
-                        <h3>CAMERA TECH/DIT AT DAGSLJUS</h3>
-                        <em>2010 to 2012</em>
-                    </div>
-                    <p>
-                        My role at Dagsljus involved deepening my knowledge of camera technology and cinematic lighting, further strengthening my ability to manage the technical and creative aspects of a film shoot.
-                    </p>
-                </div>
-            </section>
-
-            <section id="skillset">
-                <h2>MY SKILLSET</h2>
-                <ul>
-                    <li><strong>Project Leadership:</strong> A natural project leader who thrives in dynamic environments and knows how to turn ideas into action.</li>
-                    <li><strong>Strategic Mindset:</strong> A strategic mindset and a creative spark that brings projects to life. I have proven experience in managing both live and digital productions.</li>
-                    <li><strong>Planning and Logistics:</strong> Strong skills in planning, logistics, and stakeholder management.</li>
-                    <li><strong>Content Curation:</strong> Ability to define purpose, curate content, and evaluate outcomes.</li>
-                    <li><strong>Collaborative Mindset:</strong> A collaborative mindset and excellent interpersonal skills.</li>
-                </ul>
-            </section>
-
-            <section id="education">
-                <h2>EDUCATION</h2>
-                 <div class="job">
-                     <div class="job-title">
-                        <h3>TRANSMEDIA</h3>
-                        <em>2010 to 2011</em>
-                    </div>
-                    <p>15-credit course in Media Production at SKH Stockholm, with a focus on audience engagement.</p>
-                </div>
-                 <div class="job">
-                     <div class="job-title">
-                        <h3>MEDIA COLLEGE</h3>
-                        <em>2004 to 2006</em>
-                    </div>
-                    <p>College with a focus on media production.</p>
-                </div>
-                 <div class="job">
-                     <div class="job-title">
-                        <h3>CAMERA TRAINEE</h3>
-                        <em>2006 to 2010</em>
-                    </div>
-                    <p>Trained as a camera assistant and DIT on film productions in Germany.</p>
-                </div>
-            </section>
-        </main>
+        <h1>Simon Köcher</h1>
+        <h2>Cinematographer & Visual Storyteller</h2>
+        <p>
+            A creative professional with 14 years of experience in visual storytelling and project management within the film industry. Passionate about crafting captivating images and bringing creative visions to life.
+        </p>
+        <div class="links">
+            <a href="mailto:hello@simonkoecher.com">EMAIL</a>
+            <a href="http://www.simonkoecher.com" target="_blank">WEBSITE</a>
+            <!-- You can add more links here, like to LinkedIn or Instagram -->
+        </div>
     </div>
 
 </body>
