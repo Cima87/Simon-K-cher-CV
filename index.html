@@ -6,7 +6,6 @@
     <title>Simon Köcher - From Cinematography to Event Management</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- UPDATED: Added 'Lato' font for the body text -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -15,7 +14,8 @@
             --seb-light-green: #008755;
             --dark-neutral: #1a1a1a;
             --background-color: #121212;
-            --dark-red: #A12C2F; /* New color for the hero box */
+            /* UPDATED: Changed red to a professional mustard yellow */
+            --mustard-yellow: #DDAA33; 
 
             /* General Styles */
             --primary-color: #ffffff;
@@ -26,7 +26,6 @@
 
         body {
             margin: 0;
-            /* UPDATED: Using Lato for body, keeping Montserrat for headings below */
             font-family: 'Lato', sans-serif;
             background-color: var(--background-color);
             color: var(--secondary-color);
@@ -53,7 +52,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        /* UPDATED: Headings will continue to use Montserrat */
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
@@ -140,8 +138,8 @@
     <main>
         <!-- PANEL 1: HERO -->
         <section class="panel" id="hero" style="background-color: var(--seb-dark-green);">
-            <!-- UPDATED: Changed style to add red background and remove shadow -->
-            <div class="panel-content" style="background-color: var(--dark-red); box-shadow: none;">
+            <!-- UPDATED: Changed the background color to the new mustard yellow variable -->
+            <div class="panel-content" style="background-color: var(--mustard-yellow); box-shadow: none;">
                 <h1>Simon Köcher</h1>
                 <h2>From Cinematographer to Event Manager</h2>
             </div>
