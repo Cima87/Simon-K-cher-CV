@@ -14,7 +14,6 @@
             --seb-light-green: #008755;
             --dark-neutral: #1a1a1a;
             --background-color: #121212;
-            /* UPDATED: Changed red to a professional mustard yellow */
             --mustard-yellow: #DDAA33; 
 
             /* General Styles */
@@ -41,6 +40,8 @@
             box-sizing: border-box;
             position: sticky;
             top: 0;
+            background-size: cover;
+            background-position: center;
         }
 
         .panel-content {
@@ -138,16 +139,16 @@
     <main>
         <!-- PANEL 1: HERO -->
         <section class="panel" id="hero" style="background-color: var(--seb-dark-green);">
-            <!-- UPDATED: Changed the background color to the new mustard yellow variable -->
             <div class="panel-content" style="background-color: var(--mustard-yellow); box-shadow: none;">
                 <h1>Simon Köcher</h1>
                 <h2>From Cinematographer to Event Manager</h2>
             </div>
         </section>
 
-        <!-- PANEL 2: THE PREMISE -->
-        <section class="panel" id="premise" style="background-color: var(--background-color);">
-            <div class="panel-content">
+        <!-- PANEL 2: THE PREMISE (CORRECTED SECTION) -->
+        <section class="panel" id="premise" style="background-image: url('film-set.jpg');">
+            <!-- CORRECTED: Changed the background overlay from green to semi-transparent black -->
+            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
                 <h3>A Film Set is a Live Event</h3>
                 <p style="font-size: 1.2em;">
                     For 14 years, my job has been to turn a creative vision into a tangible reality. Every film shoot is a high-stakes event with complex logistics, tight deadlines, and diverse teams, equipping me with a robust skillset perfectly suited for event management.
