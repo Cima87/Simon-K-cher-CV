@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simon Köcher - From Cinematography to Event Management</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -38,7 +38,9 @@
             align-items: center;
             padding: 40px 5%;
             box-sizing: border-box;
-            /* The 'position: sticky' property has been removed to create the "push up" scroll effect */
+            /* === FIX: Added a fallback background color === */
+            /* This ensures panels are always visible, even if a background image doesn't load. */
+            background-color: var(--dark-neutral);
             background-size: cover;
             background-position: center;
         }
@@ -66,15 +68,14 @@
             max-width: 600px; 
         }
 
-        /* Container for the hero text to help with alignment */
         .hero-text-container {
-            display: inline-block; /* Allows the container to fit the text width */
+            display: inline-block;
         }
         
         #hero h1 {
-            font-size: 3.2em; /* Adjusted font size */
+            font-size: 3.2em;
             font-weight: 900;
-            letter-spacing: 8.5px; /* Increased to stretch the text */
+            letter-spacing: 8.5px;
             text-transform: uppercase;
             margin: 0;
             padding: 0;
@@ -82,10 +83,10 @@
         }
         
         #hero h2 {
-            font-size: 1.45em; /* Adjusted font size */
+            font-size: 1.45em;
             font-weight: 400;
-            letter-spacing: normal; /* Reset letter-spacing */
-            text-transform: none; /* Remove uppercase as requested */
+            letter-spacing: normal;
+            text-transform: none;
             margin-top: 10px;
             color: var(--secondary-color);
             line-height: 1.2;
@@ -93,6 +94,11 @@
 
         #hero h1, #hero h2 {
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
 
         h3 {
@@ -151,21 +157,20 @@
             }
             
             #hero {
-                justify-content: center; /* Center content on mobile */
+                justify-content: center;
                 background-position: center center;
             }
             #hero .panel-content {
-                text-align: center; /* Center text on mobile */
+                text-align: center;
             }
 
-            /* Revert hero text styles for readability on small screens */
             #hero h1 {
                 font-size: 2.2em;
-                letter-spacing: 4px; /* Reset letter-spacing */
+                letter-spacing: 4px;
             }
             #hero h2 {
                 font-size: 1em;
-                text-transform: uppercase; /* Add back for style on mobile */
+                text-transform: uppercase;
                 letter-spacing: 2px;
             }
         }
@@ -174,7 +179,7 @@
 <body>
 
     <main>
-        <!-- PANEL 1: HERO (UPDATED) -->
+        <!-- PANEL 1: HERO -->
         <section class="panel" id="hero" style="background-image: url('simon-koecher-portrait.jpg');">
             <div class="panel-content">
                 <div class="hero-text-container">
@@ -184,18 +189,85 @@
             </div>
         </section>
 
-        <!-- The rest of your page content remains the same... -->
-        
-    </main>
-    
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <h3 style="margin-bottom: 20px;">Let's create something great together.</h3>
-            <a href="mailto:hello@simonkoecher.com">EMAIL</a>
-            <a href="http://www.simonkoecher.com" target="_blank">WEBSITE</a>
-        </div>
-    </footer>
+        <!-- PANEL 2: THE PREMISE -->
+        <section class="panel" id="premise" style="background-image: url('film-set.jpg');">
+            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
+                <h3>A Film Set is a Live Event</h3>
+                <p style="font-size: 1.2em;">
+                    For 14 years, my job has been to turn a creative vision into a tangible reality. Every film shoot is a high-stakes event with complex logistics, tight deadlines, and diverse teams, equipping me with a robust skillset perfectly suited for event management.
+                </p>
+            </div>
+        </section>
 
-</body>
-</html>
+        <!-- PANEL 3: VISION -->
+        <section class="panel" id="vision" style="background-image: url('event-speaker.jpg');">
+            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
+                <h3>Vision &amp; Planning</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Translating a script into a visual blueprint. Creating storyboards, shot lists, and lighting plans to guide the entire production.</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Defining an event's purpose and goals. Developing a cohesive concept, curating content, and creating a detailed agenda for execution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- PANEL 4: TEAM -->
+        <section class="panel" id="team" style="background-image: url('team.jpg');">
+            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
+                <h3>Team Management</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Leading a crew of technicians and artists while collaborating closely with directors and producers to meet client expectations.</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Coordinating with vendors, speakers, and internal teams, ensuring everyone is aligned and working towards a common goal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANEL 5: COMMUNICATION -->
+        <section class="panel" id="communication" style="background-image: url('communication.jpg');">
+            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
+                <h3>Communication</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Acting as the key liaison between the director's vision and the technical crew. Clearly articulating complex creative and technical needs under pressure.</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Serving as the central point of contact for all stakeholders. Providing clear updates and managing expectations for clients, suppliers, and attendees.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANEL 6: LOGISTICS -->
+        <section class="panel" id="logistics" style="background-image: url('logistics.jpg');">
+            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
+                <h3>Logistics</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Managing high-value equipment, scouting and securing locations, and coordinating schedules for cast and crew across multiple departments.</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Handling venue booking, AV setup, and supplier management. Planning timelines and resources to ensure a seamless flow from start to finish.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANEL 7: EXECUTION -->
+        <section class="panel" id="execution" style="background-image: url('execution.jpg');">
+            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
+                <h3>Execu
