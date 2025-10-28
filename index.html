@@ -9,14 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* SEB Inspired Palette */
             --seb-dark-green: #00452c;
             --seb-light-green: #008755;
             --dark-neutral: #1a1a1a;
             --background-color: #121212;
-            --mustard-yellow: #DDAA33; 
-
-            /* General Styles */
+            --mustard-yellow: #DDAA33;
             --primary-color: #ffffff;
             --secondary-color: #e0e0e0;
             --accent-color: #00aaff;
@@ -38,8 +35,6 @@
             align-items: center;
             padding: 40px 5%;
             box-sizing: border-box;
-            /* === FIX: Added a fallback background color === */
-            /* This ensures panels are always visible, even if a background image doesn't load. */
             background-color: var(--dark-neutral);
             background-size: cover;
             background-position: center;
@@ -53,25 +48,24 @@
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        
-        /* === HERO SECTION STYLES === */
+
         #hero {
-            justify-content: flex-start; 
+            justify-content: flex-start;
             align-items: center;
-            background-position: center right; 
+            background-position: center right;
         }
 
         #hero .panel-content {
-            background-color: transparent; 
+            background-color: transparent;
             box-shadow: none;
             text-align: left;
-            max-width: 600px; 
+            max-width: 600px;
         }
 
         .hero-text-container {
             display: inline-block;
         }
-        
+
         #hero h1 {
             font-size: 3.2em;
             font-weight: 900;
@@ -81,7 +75,7 @@
             padding: 0;
             line-height: 1.2;
         }
-        
+
         #hero h2 {
             font-size: 1.45em;
             font-weight: 400;
@@ -122,19 +116,19 @@
             margin-top: 0;
             text-transform: uppercase;
         }
-        
+
         .comparison-grid p {
             margin-bottom: 0;
         }
 
         footer {
-            position: relative; 
-            z-index: 10; 
+            position: relative;
+            z-index: 10;
             text-align: center;
             background-color: var(--dark-neutral);
             padding: 60px 20px;
         }
-        
+
         footer a {
             color: var(--accent-color);
             text-decoration: none;
@@ -147,6 +141,20 @@
         footer a:hover {
             color: var(--primary-color);
         }
+        
+        /* === NEW ANIMATION STYLES === */
+        .hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* === END ANIMATION STYLES === */
+
 
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
@@ -155,7 +163,7 @@
             .comparison-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             #hero {
                 justify-content: center;
                 background-position: center center;
@@ -179,7 +187,7 @@
 <body>
 
     <main>
-        <!-- PANEL 1: HERO -->
+        <!-- The "hidden" class is added to each panel we want to animate -->
         <section class="panel" id="hero" style="background-image: url('simon-koecher-portrait.jpg');">
             <div class="panel-content">
                 <div class="hero-text-container">
@@ -189,9 +197,8 @@
             </div>
         </section>
 
-        <!-- PANEL 2: THE PREMISE -->
-        <section class="panel" id="premise" style="background-image: url('film-set.jpg');">
-            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
+        <section class="panel hidden" id="premise" style="background-image: url('film-set.jpg');">
+            <div class="panel-content">
                 <h3>A Film Set is a Live Event</h3>
                 <p style="font-size: 1.2em;">
                     For 14 years, my job has been to turn a creative vision into a tangible reality. Every film shoot is a high-stakes event with complex logistics, tight deadlines, and diverse teams, equipping me with a robust skillset perfectly suited for event management.
@@ -199,75 +206,112 @@
             </div>
         </section>
 
-        <!-- PANEL 3: VISION -->
-        <section class="panel" id="vision" style="background-image: url('event-speaker.jpg');">
-            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
+        <section class="panel hidden" id="vision" style="background-image: url('event-speaker.jpg');">
+            <div class="panel-content">
                 <h3>Vision &amp; Planning</h3>
                 <div class="comparison-grid">
                     <div>
                         <h4>THE FILM SET</h4>
-                        <p>Translating a script into a visual blueprint. Creating storyboards, shot lists, and lighting plans to guide the entire production.</p>
+                        <p>Translating a script into a visual blueprint...</p>
                     </div>
                     <div>
                         <h4>THE EVENT</h4>
-                        <p>Defining an event's purpose and goals. Developing a cohesive concept, curating content, and creating a detailed agenda for execution.</p>
+                        <p>Defining an event's purpose and goals...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel hidden" id="team" style="background-image: url('team.jpg');">
+            <div class="panel-content">
+                <h3>Team Management</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Leading a crew of technicians and artists...</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Coordinating with vendors, speakers, and internal teams...</p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- PANEL 4: TEAM -->
-        <section class="panel" id="team" style="background-image: url('team.jpg');">
-            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
-                <h3>Team Management</h3>
+        <section class="panel hidden" id="communication" style="background-image: url('communication.jpg');">
+            <div class="panel-content">
+                 <h3>Communication</h3>
                 <div class="comparison-grid">
                     <div>
                         <h4>THE FILM SET</h4>
-                        <p>Leading a crew of technicians and artists while collaborating closely with directors and producers to meet client expectations.</p>
+                        <p>Acting as the key liaison between the director's vision...</p>
                     </div>
                     <div>
                         <h4>THE EVENT</h4>
-                        <p>Coordinating with vendors, speakers, and internal teams, ensuring everyone is aligned and working towards a common goal.</p>
+                        <p>Serving as the central point of contact for all stakeholders...</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PANEL 5: COMMUNICATION -->
-        <section class="panel" id="communication" style="background-image: url('communication.jpg');">
-            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
-                <h3>Communication</h3>
-                <div class="comparison-grid">
-                    <div>
-                        <h4>THE FILM SET</h4>
-                        <p>Acting as the key liaison between the director's vision and the technical crew. Clearly articulating complex creative and technical needs under pressure.</p>
-                    </div>
-                    <div>
-                        <h4>THE EVENT</h4>
-                        <p>Serving as the central point of contact for all stakeholders. Providing clear updates and managing expectations for clients, suppliers, and attendees.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PANEL 6: LOGISTICS -->
-        <section class="panel" id="logistics" style="background-image: url('logistics.jpg');">
-            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
+        <section class="panel hidden" id="logistics" style="background-image: url('logistics.jpg');">
+            <div class="panel-content">
                 <h3>Logistics</h3>
                 <div class="comparison-grid">
                     <div>
                         <h4>THE FILM SET</h4>
-                        <p>Managing high-value equipment, scouting and securing locations, and coordinating schedules for cast and crew across multiple departments.</p>
+                        <p>Managing high-value equipment, scouting and securing locations...</p>
                     </div>
                     <div>
                         <h4>THE EVENT</h4>
-                        <p>Handling venue booking, AV setup, and supplier management. Planning timelines and resources to ensure a seamless flow from start to finish.</p>
+                        <p>Handling venue booking, AV setup, and supplier management...</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PANEL 7: EXECUTION -->
-        <section class="panel" id="execution" style="background-image: url('execution.jpg');">
-            <div class="panel-content" style="background-color: rgba(0, 0, 0, 0.7);">
-                <h3>Execu
+        <section class="panel hidden" id="execution" style="background-image: url('execution.jpg');">
+            <div class="panel-content">
+                <h3>Execution &amp; Problem-Solving</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Thinking on my feet to solve technical and creative problems...</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Proactively managing on-site challenges and making decisive calls...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <h3 style="margin-bottom: 20px;">Let's create something great together.</h3>
+            <a href="mailto:hello@simonkoecher.com">EMAIL</a>
+            <a href="http://www.simonkoecher.com" target="_blank">WEBSITE</a>
+        </div>
+    </footer>
+
+    <!-- === NEW JAVASCRIPT FOR ANIMATIONS === -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    // Optional: remove the class if you want the animation to re-trigger every time
+                    // entry.target.classList.remove('visible');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+    <!-- === END JAVASCRIPT === -->
+
+</body>
+</html>
