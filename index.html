@@ -66,10 +66,12 @@
             display: inline-block;
         }
 
+        /* === UPDATED HERO TEXT STYLES === */
         #hero h1 {
-            font-size: 3.2em;
+            font-size: 3.5em;
             font-weight: 900;
-            letter-spacing: 8.5px;
+            /* Increased letter-spacing significantly to stretch the title */
+            letter-spacing: 13.5px; 
             text-transform: uppercase;
             margin: 0;
             padding: 0;
@@ -77,18 +79,16 @@
         }
 
         #hero h2 {
-            font-size: 1.45em;
+            font-size: 1.3em; /* Adjusted font size for alignment */
             font-weight: 400;
-            letter-spacing: normal;
+            /* Added subtle spacing to help with alignment and readability */
+            letter-spacing: 0.5px; 
             text-transform: none;
             margin-top: 10px;
             color: var(--secondary-color);
             line-height: 1.2;
         }
-
-        #hero h1, #hero h2 {
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-        }
+        /* The text-shadow property has been removed. */
 
         h3, h4 {
             font-family: 'Montserrat', sans-serif;
@@ -141,8 +141,7 @@
         footer a:hover {
             color: var(--primary-color);
         }
-        
-        /* === NEW ANIMATION STYLES === */
+
         .hidden {
             opacity: 0;
             transform: translateY(30px);
@@ -153,8 +152,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* === END ANIMATION STYLES === */
-
 
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
@@ -172,9 +169,10 @@
                 text-align: center;
             }
 
+            /* Revert hero text styles for readability on small screens */
             #hero h1 {
                 font-size: 2.2em;
-                letter-spacing: 4px;
+                letter-spacing: 4px; /* Reset letter-spacing */
             }
             #hero h2 {
                 font-size: 1em;
@@ -187,7 +185,6 @@
 <body>
 
     <main>
-        <!-- The "hidden" class is added to each panel we want to animate -->
         <section class="panel" id="hero" style="background-image: url('simon-koecher-portrait.jpg');">
             <div class="panel-content">
                 <div class="hero-text-container">
@@ -237,7 +234,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="panel hidden" id="communication" style="background-image: url('communication.jpg');">
             <div class="panel-content">
                  <h3>Communication</h3>
@@ -286,7 +283,7 @@
             </div>
         </section>
     </main>
-    
+
     <footer>
         <div class="container">
             <h3 style="margin-bottom: 20px;">Let's create something great together.</h3>
@@ -295,15 +292,11 @@
         </div>
     </footer>
 
-    <!-- === NEW JAVASCRIPT FOR ANIMATIONS === -->
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                } else {
-                    // Optional: remove the class if you want the animation to re-trigger every time
-                    // entry.target.classList.remove('visible');
                 }
             });
         });
@@ -311,7 +304,6 @@
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observer.observe(el));
     </script>
-    <!-- === END JAVASCRIPT === -->
 
 </body>
 </html>
