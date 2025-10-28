@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simon Köcher - From Cinematography to Event Management</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
+            --seb-dark-green: #00452c;
+            --seb-light-green: #008755;
             --dark-neutral: #1a1a1a;
             --background-color: #121212;
+            --mustard-yellow: #DDAA33;
             --primary-color: #ffffff;
             --secondary-color: #e0e0e0;
             --accent-color: #00aaff;
@@ -23,25 +26,6 @@
             background-color: var(--background-color);
             color: var(--secondary-color);
             line-height: 1.7;
-            /* Hide the main content initially to prevent flash */
-            opacity: 0;
-            transition: opacity 0.5s ease-in;
-        }
-
-        body.ready {
-            opacity: 1;
-        }
-
-        /* The canvas sits on top of everything */
-        #pixel-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 100;
-            pointer-events: none; /* Allows clicks to go through */
-            display: none; /* Hidden by default */
         }
 
         .panel {
@@ -54,8 +38,6 @@
             background-color: var(--dark-neutral);
             background-size: cover;
             background-position: center;
-            position: relative; /* Needed for stacking context */
-            z-index: 1;
         }
 
         .panel-content {
@@ -84,152 +66,252 @@
             display: inline-block;
         }
 
-        #hero h1 { font-size: 3.2em; font-weight: 900; letter-spacing: 8.5px; text-transform: uppercase; margin: 0; padding: 0; line-height: 1.2; }
-        #hero h2 { font-size: 1.45em; font-weight: 400; letter-spacing: normal; text-transform: none; margin-top: 10px; color: var(--secondary-color); line-height: 1.2; }
-        #hero h1, #hero h2 { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); }
+        #hero h1 {
+            font-size: 3.2em;
+            font-weight: 900;
+            letter-spacing: 8.5px;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+        }
 
-        h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
-        h3 { font-size: 2.5em; color: var(--primary-color); margin-bottom: 40px; }
+        #hero h2 {
+            font-size: 1.45em;
+            font-weight: 400;
+            letter-spacing: normal;
+            text-transform: none;
+            margin-top: 10px;
+            color: var(--secondary-color);
+            line-height: 1.2;
+        }
+
+        #hero h1, #hero h2 {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            text-align: left;
+        }
+
+        .comparison-grid h4 {
+            font-size: 1.1em;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        .comparison-grid p {
+            margin-bottom: 0;
+        }
+
+        footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            background-color: var(--dark-neutral);
+            padding: 60px 20px;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            transition: color 0.3s;
+            font-size: 1.2em;
+        }
+
+        footer a:hover {
+            color: var(--primary-color);
+        }
         
-        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: left; }
-        .comparison-grid h4 { font-size: 1.1em; color: var(--accent-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 8px; margin-top: 0; text-transform: uppercase; }
-        .comparison-grid p { margin-bottom: 0; }
-        
-        footer { position: relative; z-index: 10; text-align: center; background-color: var(--dark-neutral); padding: 60px 20px; }
-        footer a { color: var(--accent-color); text-decoration: none; font-weight: bold; margin: 0 15px; transition: color 0.3s; font-size: 1.2em; }
-        footer a:hover { color: var(--primary-color); }
+        /* === NEW ANIMATION STYLES === */
+        .hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* === END ANIMATION STYLES === */
+
 
         @media (max-width: 768px) {
-            #hero { justify-content: center; background-position: center center; }
-            #hero .panel-content { text-align: center; }
-            #hero h1 { font-size: 2.2em; letter-spacing: 4px; }
-            #hero h2 { font-size: 1em; text-transform: uppercase; letter-spacing: 2px; }
-            .comparison-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2em; }
+            h3 { font-size: 1.8em; }
+            .panel-content { padding: 30px; }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #hero {
+                justify-content: center;
+                background-position: center center;
+            }
+            #hero .panel-content {
+                text-align: center;
+            }
+
+            #hero h1 {
+                font-size: 2.2em;
+                letter-spacing: 4px;
+            }
+            #hero h2 {
+                font-size: 1em;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <canvas id="pixel-canvas"></canvas>
-
     <main>
+        <!-- The "hidden" class is added to each panel we want to animate -->
         <section class="panel" id="hero" style="background-image: url('simon-koecher-portrait.jpg');">
-            <div class="panel-content"><div class="hero-text-container"><h1>Simon Köcher</h1><h2>From Cinematographer to Event Manager</h2></div></div>
+            <div class="panel-content">
+                <div class="hero-text-container">
+                    <h1>Simon Köcher</h1>
+                    <h2>From Cinematographer to Event Manager</h2>
+                </div>
+            </div>
         </section>
-        <section class="panel" id="premise" style="background-image: url('film-set.jpg');">
-            <div class="panel-content"><h3>A Film Set is a Live Event</h3><p style="font-size: 1.2em;">For 14 years, my job has been to turn a creative vision into a tangible reality...</p></div>
+
+        <section class="panel hidden" id="premise" style="background-image: url('film-set.jpg');">
+            <div class="panel-content">
+                <h3>A Film Set is a Live Event</h3>
+                <p style="font-size: 1.2em;">
+                    For 14 years, my job has been to turn a creative vision into a tangible reality. Every film shoot is a high-stakes event with complex logistics, tight deadlines, and diverse teams, equipping me with a robust skillset perfectly suited for event management.
+                </p>
+            </div>
         </section>
-        <section class="panel" id="vision" style="background-image: url('event-speaker.jpg');">
-            <div class="panel-content"><h3>Vision &amp; Planning</h3><div class="comparison-grid"><div><h4>THE FILM SET</h4><p>Translating a script into a visual blueprint...</p></div><div><h4>THE EVENT</h4><p>Defining an event's purpose and goals...</p></div></div></div>
+
+        <section class="panel hidden" id="vision" style="background-image: url('event-speaker.jpg');">
+            <div class="panel-content">
+                <h3>Vision &amp; Planning</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Translating a script into a visual blueprint...</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Defining an event's purpose and goals...</p>
+                    </div>
+                </div>
+            </div>
         </section>
-        <!-- Add the other panels here as needed -->
+
+        <section class="panel hidden" id="team" style="background-image: url('team.jpg');">
+            <div class="panel-content">
+                <h3>Team Management</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Leading a crew of technicians and artists...</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Coordinating with vendors, speakers, and internal teams...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="panel hidden" id="communication" style="background-image: url('communication.jpg');">
+            <div class="panel-content">
+                 <h3>Communication</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Acting as the key liaison between the director's vision...</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Serving as the central point of contact for all stakeholders...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel hidden" id="logistics" style="background-image: url('logistics.jpg');">
+            <div class="panel-content">
+                <h3>Logistics</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Managing high-value equipment, scouting and securing locations...</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Handling venue booking, AV setup, and supplier management...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel hidden" id="execution" style="background-image: url('execution.jpg');">
+            <div class="panel-content">
+                <h3>Execution &amp; Problem-Solving</h3>
+                <div class="comparison-grid">
+                    <div>
+                        <h4>THE FILM SET</h4>
+                        <p>Thinking on my feet to solve technical and creative problems...</p>
+                    </div>
+                    <div>
+                        <h4>THE EVENT</h4>
+                        <p>Proactively managing on-site challenges and making decisive calls...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     
     <footer>
-        <div class="container"><h3>Let's create something great together.</h3><a href="mailto:hello@simonkoecher.com">EMAIL</a><a href="http://www.simonkoecher.com" target="_blank">WEBSITE</a></div>
+        <div class="container">
+            <h3 style="margin-bottom: 20px;">Let's create something great together.</h3>
+            <a href="mailto:hello@simonkoecher.com">EMAIL</a>
+            <a href="http://www.simonkoecher.com" target="_blank">WEBSITE</a>
+        </div>
     </footer>
 
-    <!-- html2canvas library (inlined) -->
-    <script>!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):t.html2canvas=e()}(this,function(){"use strict";var t=function(t,e,n,r){return new(n||(n=Promise))(function(i,o){function a(t){try{c(r.next(t))}catch(t){o(t)}}function s(t){try{c(r.throw(t))}catch(t){o(t)}}function c(t){t.done?i(t.value):new n(function(e){e(t.value)}).then(a,s)}c((r=r.apply(t,e||[])).next())})},e={};/*... A very long, minified version of the html2canvas library would be here ...*/</script>
-
+    <!-- === NEW JAVASCRIPT FOR ANIMATIONS === -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const canvas = document.getElementById('pixel-canvas');
-            const ctx = canvas.getContext('2d');
-            const panels = Array.from(document.querySelectorAll('.panel'));
-            const panelData = [];
-            let isTicking = false;
-
-            function setup() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                ctx.imageSmoothingEnabled = false; // Crucial for pixelation
-
-                // Use html2canvas to capture each panel
-                const capturePromises = panels.map(panel => 
-                    html2canvas(panel, { 
-                        width: window.innerWidth, 
-                        height: window.innerHeight,
-                        windowWidth: window.innerWidth,
-                        windowHeight: window.innerHeight,
-                        scrollY: -window.scrollY // Capture from top of element
-                    }).then(canvas => {
-                        return {
-                            top: panel.offsetTop,
-                            bottom: panel.offsetTop + panel.offsetHeight,
-                            image: canvas
-                        };
-                    })
-                );
-
-                Promise.all(capturePromises).then(data => {
-                    panelData.push(...data);
-                    document.body.classList.add('ready'); // Show the page content
-                    window.addEventListener('scroll', onScroll);
-                }).catch(err => {
-                    console.error("Failed to capture panels:", err);
-                    // If capturing fails, just show the page normally.
-                    document.body.classList.add('ready');
-                });
-            }
-
-            function onScroll() {
-                if (!isTicking) {
-                    window.requestAnimationFrame(() => {
-                        draw();
-                        isTicking = false;
-                    });
-                    isTicking = true;
-                }
-            }
-
-            function draw() {
-                const scrollY = window.scrollY;
-                const transitionZone = window.innerHeight * 0.25; // Effect active in top quarter of screen
-
-                let inTransition = false;
-
-                for (let i = 0; i < panelData.length - 1; i++) {
-                    const currentPanel = panelData[i];
-                    const nextPanel = panelData[i + 1];
-
-                    // Check if we are in the transition area between current and next panel
-                    if (scrollY > currentPanel.bottom - transitionZone && scrollY < currentPanel.bottom) {
-                        inTransition = true;
-                        
-                        const progress = (scrollY - (currentPanel.bottom - transitionZone)) / transitionZone;
-                        
-                        // Pixel size increases as we scroll through the transition
-                        const pixelSize = Math.max(2, Math.floor(progress * 50));
-
-                        drawPixelated(currentPanel.image, pixelSize);
-                        break; // Only handle one transition at a time
-                    }
-                }
-
-                if (inTransition) {
-                    canvas.style.display = 'block';
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 } else {
-                    canvas.style.display = 'none';
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    // Optional: remove the class if you want the animation to re-trigger every time
+                    // entry.target.classList.remove('visible');
                 }
-            }
-            
-            function drawPixelated(image, pixelSize) {
-                // Draw the original image small, then scale it up to create the pixelated effect
-                const smallWidth = Math.round(canvas.width / pixelSize);
-                const smallHeight = Math.round(canvas.height / pixelSize);
-
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                // Draw the captured panel image onto the small canvas
-                ctx.drawImage(image, 0, 0, smallWidth, smallHeight);
-                // Scale the small canvas content back up to the full size
-                ctx.drawImage(canvas, 0, 0, smallWidth, smallHeight, 0, 0, canvas.width, canvas.height);
-            }
-
-            // Wait for images to load before capturing
-            window.addEventListener('load', setup);
+            });
         });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
     </script>
+    <!-- === END JAVASCRIPT === -->
+
 </body>
 </html>
