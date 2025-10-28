@@ -52,6 +52,31 @@
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
+        
+        /* Added styles for the hero section grid */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr; /* Adjusted column sizes */
+            align-items: center;
+            gap: 50px; /* Increased gap */
+            max-width: 1000px; /* Increased max-width */
+            width: 100%;
+        }
+
+        .hero-image-container {
+            text-align: right; /* Aligns image to the right */
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* Optional: adds rounded corners to the image */
+        }
+
+        .hero-text {
+            text-align: left; /* Aligns text to the left */
+        }
+
 
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
@@ -131,6 +156,20 @@
             .comparison-grid {
                 grid-template-columns: 1fr;
             }
+             /* Adjust hero grid for smaller screens */
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-image-container {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -139,9 +178,15 @@
     <main>
         <!-- PANEL 1: HERO -->
         <section class="panel" id="hero" style="background-color: var(--seb-dark-green);">
-            <div class="panel-content" style="background-color: var(--mustard-yellow); box-shadow: none;">
-                <h1>Simon Köcher</h1>
-                <h2>From Cinematographer to Event Manager</h2>
+            <div class="hero-grid">
+                <div class="hero-image-container">
+                    <!-- ===> IMAGE PATH UPDATED HERE <=== -->
+                    <img src="images/simon-koecher-portrait.jpg" alt="Simon Köcher" class="hero-image">
+                </div>
+                <div class="hero-text">
+                    <h1>Simon Köcher</h1>
+                    <h2>From Cinematographer to Event Manager</h2>
+                </div>
             </div>
         </section>
 
